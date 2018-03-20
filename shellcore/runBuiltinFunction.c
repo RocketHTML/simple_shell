@@ -11,5 +11,13 @@ int runBuiltinFunction(cmdstruct *cmd, int bg)
 		{"moo", moo},
 		{NULL, NULL}
 	};
+	int i = 0;
+
+	while (functions[i].name)
+		if (strcmp(cmd->argv[0], functions[i].name) == 0)
+		{
+			functions[i].f(cmd->argv);
+			return (0);
+		}
 	return (-1);
 }
