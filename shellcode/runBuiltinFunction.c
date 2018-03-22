@@ -9,6 +9,8 @@ int runBuiltinFunction(cmdstruct *cmd, int bg)
 {
 	builtin functions[] = {
 		{"moo", moo},
+		{"env", env},
+		{"exit", exit2},
 		{NULL, NULL}
 	};
 	int i = 0;
@@ -17,7 +19,7 @@ int runBuiltinFunction(cmdstruct *cmd, int bg)
 	{
 		if (strcmp(cmd->argv[0], functions[i].name) == 0)
 		{
-			functions[i].f(cmd->argv);
+			functions[i].f(cmd);
 			return (0);
 		}
 		i++;

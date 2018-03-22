@@ -10,10 +10,13 @@ int runUserExecutable(cmdstruct *cmd, int bg)
 	struct stat st;
 	pid_t child_pid;
 	int status = 0;
-	//char *path;
-	//char *command_path;
+	pathnode *pathhead;
+	char *commandpath;
 
-	if (stat(cmd->argv[0], &st) == 0)
+	pathhead = make_pathlist(); 			//free path list
+	commandpath = pathsearch(cmd->argv[0], pathhead); 	//free commandpath
+
+	if (commandpath)
 	{
 		child_pid = fork();
 		if (child_pid == -1)
@@ -23,7 +26,7 @@ int runUserExecutable(cmdstruct *cmd, int bg)
 		}
 		if (child_pid == 0)
 		{
-			if (execve(cmd->argv[0], cmd->argv, NULL) == -1)
+			if (execve(commandpath, cmd->argv, NULL) == -1)
 			{
 				perror("runUserExecutable: could not execute file");
 				return (-1);
@@ -37,6 +40,6 @@ int runUserExecutable(cmdstruct *cmd, int bg)
 		return (status);
 	}
 	else
-		return (-1);
+		return (-1); //free path list
 	return (0);
 }

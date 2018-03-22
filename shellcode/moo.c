@@ -4,9 +4,10 @@
  * @argv: inputs
  * Return: 0
  */
-int moo(char **argv)
+int moo(cmdstruct *cmd)
 {
 	int i;
+	char **argv = cmd->argv;
 
 	printf("< moOh >\n");
 	for (i = 1; argv[i]; i++)

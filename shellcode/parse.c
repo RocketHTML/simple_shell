@@ -35,9 +35,10 @@ int count_words(char *s, char *delims)
  * parse - parses command line
  * @cmdline: command string to parse
  * @cmd: command struct to initialize
+ * @env: environment
  * Return: 1 if command should run in background, -1 on error
  */
-int parse(char *cmdline, cmdstruct *cmd)
+int parse(char *cmdline, cmdstruct *cmd, char **env)
 {
 	char delims[] = " \t\r\n";
 	size_t cmdsize = strlen(cmdline);	
@@ -54,6 +55,7 @@ int parse(char *cmdline, cmdstruct *cmd)
 		return (-1);
 	cmd->argc = argc;
 	cmd->argv = argv;
+	cmd->env = env;
 
 	//how to free dup later - put it in command struct
 	dup = strdup(cmdline);

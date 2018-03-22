@@ -5,7 +5,7 @@
  * @argv: arguments
  * Return: returns 0 on success
  */
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **env)
 {
 	size_t init_size = 1024;
 	char **cmdline;
@@ -30,6 +30,6 @@ int main(int argc, char **argv)
 		cmdline[0][strlen(cmdline[0]) - 1] = '\0';
 
 		// evaluate command line
-		eval(cmdline[0]);
+		eval(cmdline[0], env);
 	}
 }

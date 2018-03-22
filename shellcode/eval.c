@@ -3,14 +3,15 @@
 /**
  * eval - evaluate command
  * @cmdline: command to evaluate
+ * @env: environment
  */
-void eval(char *cmdline)
+void eval(char *cmdline, char **env)
 {
 	int bg;
 	cmdstruct cmd;
 
 	printf("Evaluating '%s'\n", cmdline);
-	bg = parse(cmdline, &cmd);
+	bg = parse(cmdline, &cmd, env); // bg = run in the background ? 1 : 0
 
 	// parse error
 	if (bg == -1)
@@ -27,8 +28,8 @@ void eval(char *cmdline)
 	}
 
 	if (runAlias(&cmd, bg) == -1)
-		if (runUserExecutable(&cmd, bg) == -1)
-			if (runBuiltinFunction(&cmd, bg) == -1)
+		if (runBuiltinFunction(&cmd, bg) == -1)
+			if (runUserExecutable(&cmd, bg) == -1)
 				printf("%s NOT FOUND\n", cmd.argv[0]);
 	free_cmd(&cmd);
 }
