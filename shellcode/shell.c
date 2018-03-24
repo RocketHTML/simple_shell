@@ -11,7 +11,7 @@ int main(int argc, char **argv, char **env)
 	char *cmdline;
 	char prompt[] = "$ ";
 
-	cmdline = malloc(sizeof(char *) * init_size);
+	cmdline = malloc(sizeof(char) * init_size);
 
 	while (1)
 	{
