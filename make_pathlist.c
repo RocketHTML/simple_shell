@@ -63,10 +63,7 @@ char *pathsearch(char *command, pathnode *head)
 	struct stat st;
 
 	if (stat(command, &st) == 0)
-	{
-		printf("full pathname provided: %s\n", command);
 		return (command);
-	}
 
 	while (p != NULL)
 	{
@@ -78,13 +75,10 @@ char *pathsearch(char *command, pathnode *head)
 		result[strlen(p->path) + 1] = '\0';
 		strcat(result, command);
 		if (stat(result, &st) == 0)
-		{
-			printf("stat found it: %s\n", result);
 			return (result); 			//must free result
-		}
 		free(result);
 		p = p->next;
 	}
-	printf("pathsearch: couldn't find it\n");
+	printf("command not found \n");
 	return (NULL);
 }

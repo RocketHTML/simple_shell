@@ -10,7 +10,6 @@ void eval(char *cmdline, char **env)
 	int bg;
 	cmdstruct cmd;
 
-	printf("Evaluating '%s'\n", cmdline);
 	bg = parse(cmdline, &cmd, env); // bg = run in the background ? 1 : 0
 
 	// parse error
