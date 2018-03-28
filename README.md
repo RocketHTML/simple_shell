@@ -1,18 +1,13 @@
 # Simple Shell
 
 ### Description
-	Homemade version of the linux shell
+Homemade version of the linux shell
 	
 ### Environment
-	Ubuntu 14.04 LTS via Vagrant in VirtualBox
+Ubuntu 14.04 LTS via Vagrant in VirtualBox
 
 ### Features
-	Can run user defined executables
-	Searches the path for executables
-	Can run linux env built-in command
-	Can run custom moo built-in command
-	Will ignore Ctrl-C signal
-	Will quit on "exit"
+Searches `PATH` for specified executables and runs them. Has functional `env`and `moo` built-in commands. Ignores `Ctrl-C` signal, and will only quit on `exit` or if EOF is read, which can be input with `Ctrl-D`.
 
 ### File Contents
 |   **File**   |   **Description**   |
