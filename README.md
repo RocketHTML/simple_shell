@@ -43,7 +43,7 @@
 	$ git clone https://github.com/RocketHTML/simple_shell
 
 ### Compilation
-	$ gcc -Wall -Wextra -Werror -pedantic -Wno-format *.c -o printf
+	$ gcc -Wall -Wextra -Werror -pedantic -Wno-format *.c -o shell
 
 ### Example
 ![shellgif](https://media.giphy.com/media/vgzs5zPpGHdtp2sf1p/giphy.gif)
