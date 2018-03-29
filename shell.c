@@ -3,6 +3,8 @@
  * main - program start
  * @argc: number of arguments
  * @argv: arguments
+ * @env: This is our environment.
+ *
  * Return: returns 0 on success
  */
 int main(int argc, char **argv, char **env)
@@ -25,10 +27,10 @@ int main(int argc, char **argv, char **env)
 				printf("\n");
 				exit(0);
 			}
-		// remove trailing newline
+		/* remove trailing newline*/
 		cmdline[strlen(cmdline) - 1] = '\0';
 
-		// evaluate command line
+		/* evaluate command line*/
 		eval(cmdline, env);
 	}
 }
