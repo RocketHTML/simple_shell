@@ -22,7 +22,7 @@ int count_words(char *s, char *delims)
 		if (!oldchar && !is_delim)
 			words++;
 
-		if(is_delim)
+		if (is_delim)
 			oldchar = 0;
 		else
 			oldchar = 1;
@@ -41,7 +41,7 @@ int count_words(char *s, char *delims)
 int parse(char *cmdline, cmdstruct *cmd, char **env)
 {
 	char delims[] = " \t\r\n";
-	size_t cmdsize = strlen(cmdline);	
+	size_t cmdsize = strlen(cmdline);
 	int is_bg = 0, argc, i;
 	char **argv;
 	char *dup;
@@ -57,7 +57,7 @@ int parse(char *cmdline, cmdstruct *cmd, char **env)
 	cmd->argv = argv;
 	cmd->env = env;
 
-	//how to free dup later - put it in command struct
+	/*how to free dup later - put it in command struct */
 	dup = strdup(cmdline);
 	cmd->must_free = dup;
 
@@ -68,11 +68,11 @@ int parse(char *cmdline, cmdstruct *cmd, char **env)
 	}
 	cmd->argv[argc] = NULL;
 
-	// ignore blank line
+	/* ignore blank line*/
 	if (cmd->argc == 0)
 		return (1);
 
-	// should job run in the background?
+	/* should job run in the background? */
 	if ((is_bg = (cmd->argv[argc - 1][0] == '&')) != 0)
 		cmd->argv[--cmd->argc] = NULL;
 
