@@ -67,13 +67,10 @@ int parse(char *cmdline, cmdstruct *cmd, char **env)
 		cmd->argv[i] = strtok(NULL, delims);
 	}
 	cmd->argv[argc] = NULL;
-
 	/* ignore blank line*/
 	if (cmd->argc == 0)
 		return (1);
-
-	/* should job run in the background? */
-	is_bg = cmd->argv[argc - 1][0] == '&'; 
+	is_bg = cmd->argv[argc - 1][0] == '&'; /* Should job run in bg? */
 	if (is_bg)
 	{
 		cmd->argv[cmd->argc - 1] = NULL;
