@@ -13,8 +13,8 @@ int runUserExecutable(cmdstruct *cmd, int bg)
 	pathnode *pathhead;
 	char *commandpath;
 
-	pathhead = make_pathlist(); 			//free path list
-	commandpath = pathsearch(cmd->argv[0], pathhead); 	//free commandpath
+	pathhead = make_pathlist();/*free path list*/
+	commandpath = pathsearch(cmd->argv[0], pathhead);/*free commandpath*/
 
 	if (commandpath)
 	{
@@ -33,13 +33,13 @@ int runUserExecutable(cmdstruct *cmd, int bg)
 			}
 		}
 		else if (!bg)
-			wait(&status); // thats how you get the status
+			wait(&status); /* thats how you get the status*/
 		else
 			printf("Child in background [%d]\n", child_pid);
 
 		return (status);
 	}
 	else
-		return (-1); //free path list
+		return (-1); /*free path list*/
 	return (0);
 }
