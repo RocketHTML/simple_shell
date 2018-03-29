@@ -73,8 +73,12 @@ int parse(char *cmdline, cmdstruct *cmd, char **env)
 		return (1);
 
 	/* should job run in the background? */
-	if ((is_bg = (cmd->argv[argc - 1][0] == '&')) != 0)
-		cmd->argv[--cmd->argc] = NULL;
+	is_bg = cmd->argv[argc - 1][0] == '&'; 
+	if (is_bg)
+	{
+		cmd->argv[cmd->argc - 1] = NULL;
+		cmd->argc -= 1;
+	}
 
 	return (is_bg);
 }
