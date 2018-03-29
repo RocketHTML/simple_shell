@@ -1,7 +1,8 @@
 #include "shell.h"
 /**
  * moo - prints cow
- * @argv: inputs
+ * @cmd: inout
+ *
  * Return: 0
  */
 int moo(cmdstruct *cmd)
