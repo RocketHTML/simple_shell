@@ -1,14 +1,16 @@
 #include "shell.h"
 
-/** _create_pathnode - create path node
- * @data: path string
+/**
+ * _create_pathnode - create path node
+ * @path: path string
+ *
  * Return: pointer to new node
  */
 pathnode *create_pathnode(char *path)
 {
 	pathnode *node;
 
-	node = malloc(sizeof(pathnode)); // not working
+	node = malloc(sizeof(pathnode)); /* not working */
 	if (node == NULL)
 	{
 		printf("create node: node finally null\n");
@@ -21,7 +23,7 @@ pathnode *create_pathnode(char *path)
 
 /**
  * make_pathlist - create's pathlist
- * Return: path linked list 
+ * Return: path linked list
  */
 pathnode *make_pathlist()
 {
@@ -32,7 +34,7 @@ pathnode *make_pathlist()
 	pathnode *p;
 
 	paths = getenv("PATH");
-	paths = strdup(paths); // gotta free this paths duplicate / and only need to do it once per session / or if path changes
+	paths = strdup(paths); /*gotta free this paths duplicate once per sess*/
 	buffer = strtok(paths, delims);
 	if (buffer == NULL)
 		return (NULL);
@@ -41,10 +43,10 @@ pathnode *make_pathlist()
 		return (NULL);
 	p = head;
 	while (buffer = strtok(NULL, delims))
-	{
-		p->next = create_pathnode(buffer); // pathlist reliant on paths duplicate // so free head to free duplicate
+	{ /*pathlist reliant on paths duplicate so free head to free duplicate*/
+		p->next = create_pathnode(buffer);
 		if (!p->next)
-			break; // must free path list & paths duplicate
+			break; /* must free path list & paths duplicate*/
 		p = p->next;
 	}
 	return (head);
@@ -66,8 +68,8 @@ char *pathsearch(char *command, pathnode *head)
 		return (command);
 
 	while (p != NULL)
-	{
-		result = malloc(strlen(p->path) + strlen(command) + 2); //must free result
+	{/*must free result*/
+		result = malloc(strlen(p->path) + strlen(command) + 2);
 		if (!result)
 			return (NULL);
 		strcpy(result, p->path);
@@ -75,10 +77,10 @@ char *pathsearch(char *command, pathnode *head)
 		result[strlen(p->path) + 1] = '\0';
 		strcat(result, command);
 		if (stat(result, &st) == 0)
-			return (result); 			//must free result
+			return (result);/*must free result*/
 		free(result);
 		p = p->next;
 	}
-	printf("command not found \n");
+	printf("command not found\n");
 	return (NULL);
 }
