@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * env - This gets and prints the environmental variable.
+ * @cmd: This is our pointer holding our command.
+ *
+ * Return: 0.
+ */
+
 int env(cmdstruct *cmd)
 {
 	int i;
