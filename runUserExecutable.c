@@ -7,7 +7,6 @@
  */
 int runUserExecutable(cmdstruct *cmd, int bg)
 {
-	struct stat st;
 	pid_t child_pid;
 	int status = 0;
 	pathnode *pathhead;
